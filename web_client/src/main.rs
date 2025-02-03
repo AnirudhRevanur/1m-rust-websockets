@@ -42,7 +42,6 @@ async fn send_message(client_id: u64) {
 
     let (mut write, _read) = ws_stream.split();
 
-    // Send client ID first
     let client_id_str = format!("{}", client_id);
     if let Err(e) = write.send(client_id_str.clone().into()).await {
         eprintln!("Client {}: Error sending client ID: {}", client_id, e);
